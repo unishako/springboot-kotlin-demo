@@ -1,0 +1,17 @@
+version: '3'
+services:
+  mssql:
+    build:
+      context: ./docker/db/
+      dockerfile: Dockerfile
+    ports:
+      - "1433:1433"
+    container_name: mssql
+    volumes:
+      - mssql:/var/opt/mssql
+      - ./docker/db/backup:/var/opt/mssql/backup
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Passw0rd
+volumes:
+  mssql:
