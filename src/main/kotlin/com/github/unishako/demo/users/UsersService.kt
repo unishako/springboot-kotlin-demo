@@ -3,6 +3,7 @@ package com.github.unishako.demo.users
 import org.springframework.stereotype.Service
 import java.math.BigDecimal
 import java.util.*
+import javax.transaction.Transactional
 
 @Service
 class UsersService(private val repository: UsersRepository) {
@@ -16,6 +17,7 @@ class UsersService(private val repository: UsersRepository) {
             repository.findByNameContainingOrderByIdAsc(name)
     }
 
+    @Transactional
     fun addUser(users: Users) {
         repository.save(users)
     }
