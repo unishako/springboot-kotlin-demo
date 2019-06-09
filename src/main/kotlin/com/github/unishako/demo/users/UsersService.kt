@@ -2,7 +2,6 @@ package com.github.unishako.demo.users
 
 import org.springframework.stereotype.Service
 import java.math.BigDecimal
-import java.util.*
 import javax.transaction.Transactional
 
 @Service
@@ -18,8 +17,8 @@ class UsersService(private val repository: UsersRepository) {
     }
 
     @Transactional
-    fun addUser(users: Users) {
-        repository.save(users)
+    fun addUser(dto: UsersRequestDto) {
+        repository.save(Users(name = dto.name))
     }
 }
 
