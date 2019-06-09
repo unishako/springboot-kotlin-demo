@@ -12,7 +12,7 @@ class UsersController(private val service: UsersService) {
     fun users(@RequestParam name: String?): List<Users> = service.getUsers(name.orEmpty())
 
     @GetMapping("/{id}")
-    fun users(@PathVariable id: BigDecimal): Optional<Users> = service.getUser(id)
+    fun users(@PathVariable id: BigDecimal): Users? = service.getUser(id)
 
     @PostMapping
     fun users(@RequestBody users: Users) = service.addUser(users)

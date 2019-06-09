@@ -8,7 +8,7 @@ import javax.transaction.Transactional
 @Service
 class UsersService(private val repository: UsersRepository) {
 
-    fun getUser(id: BigDecimal): Optional<Users> = repository.findById(id)
+    fun getUser(id: BigDecimal): Users? = repository.findById(id).orElse(Users())
 
     fun getUsers(name: String): List<Users> {
         return if (name.isEmpty())

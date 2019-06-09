@@ -6,5 +6,5 @@ import javax.persistence.*
 @Entity
 @Table
 data class Users(
-        @Id @GeneratedValue(strategy =  GenerationType.IDENTITY) var id: BigDecimal?,
-        @Column var name: String)
+        @Id @GeneratedValue(strategy =  GenerationType.IDENTITY) var id: BigDecimal? = null,
+        @Column var name: String = "")
