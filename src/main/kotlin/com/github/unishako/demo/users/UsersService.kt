@@ -9,16 +9,13 @@ class UsersService(private val repository: UsersRepository) {
 
     fun getUser(id: BigDecimal): Users? = repository.findById(id).orElse(Users())
 
-    fun getUsers(name: String): List<Users> {
-        return if (name.isEmpty())
-            repository.findAllByOrderById()
-        else
-            repository.findByNameContainingOrderByIdAsc(name)
-    }
+    fun getUsers(name: String): List<Users> =
+            if (name.isEmpty())
+                repository.findAllByOrderById()
+            else
+                repository.findByNameContainingOrderByIdAsc(name)
 
     @Transactional
-    fun addUser(dto: UsersRequestDto) {
-        repository.save(Users(name = dto.name))
-    }
+    fun addUser(dto: UsersRequestDto) = repository.save(Users(name = dto.name))
 }
 
