@@ -17,5 +17,8 @@ class UsersService(private val repository: UsersRepository) {
 
     @Transactional
     fun addUser(dto: UsersRequestDto) = repository.save(Users(name = dto.name))
+
+    @Transactional
+    fun deleteUser(id: BigDecimal) = repository.deleteById(id)
 }
 

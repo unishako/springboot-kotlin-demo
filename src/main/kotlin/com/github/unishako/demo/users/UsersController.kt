@@ -9,11 +9,15 @@ import java.math.BigDecimal
 class UsersController(private val service: UsersService) {
 
     @GetMapping
-    fun users(@RequestParam name: String?): List<Users> = service.getUsers(name.orEmpty())
+    fun getUsers(@RequestParam name: String?): List<Users> = service.getUsers(name.orEmpty())
 
     @GetMapping("/{id}")
-    fun users(@PathVariable id: BigDecimal): Users? = service.getUser(id)
+    fun getUser(@PathVariable id: BigDecimal): Users? = service.getUser(id)
 
     @PostMapping
-    fun users(@RequestBody @Validated dto: UsersRequestDto) = service.addUser(dto)
+    fun addUser(@RequestBody @Validated dto: UsersRequestDto) = service.addUser(dto)
+
+    @DeleteMapping("/{id}")
+    fun deleteUser(@PathVariable id: BigDecimal) = service.deleteUser(id)
+
 }
