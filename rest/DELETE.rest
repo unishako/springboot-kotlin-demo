@@ -1,0 +1,3 @@
+DELETE http://localhost:8080/api/users/13 HTTP/1.1
+
+###
