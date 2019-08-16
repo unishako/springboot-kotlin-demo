@@ -1,11 +1,12 @@
 package com.github.unishako.demo.users
 
+import org.slf4j.Logger
 import org.springframework.stereotype.Service
 import java.math.BigDecimal
 import javax.transaction.Transactional
 
 @Service
-class UsersService(private val repository: UsersRepository) {
+class UsersService(private val repository: UsersRepository, private val log: Logger) {
 
     fun getUser(id: BigDecimal): Users? = repository.findById(id).orElse(Users())
 

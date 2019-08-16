@@ -7,4 +7,4 @@ import javax.persistence.*
 @Table
 data class Users(
         @Id @GeneratedValue(strategy =  GenerationType.IDENTITY) var id: BigDecimal? = null,
-        @Column var name: String = "")
+        var name: String = "")
